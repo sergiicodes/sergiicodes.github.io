@@ -19,20 +19,32 @@
     </head>
     <body>
         <div class="wrapper">
+
+            <!--LEFT SIDE-->
             <header>
                 <h1 style="font-weight: bold">
                 Sergio Hernandez-Acosta
                 </h1>
                 <img src="me.png" alt="Logo"/>
 
-                <p>
+                <p style="font-size: 5px;">
                     <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="sergio-hernandez-acosta" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/sergio-hernandez-acosta?trk=profile-badge"></a></div>                
                 </p>
-
             </header>
+
             <section>
-                <h2 id="selected-projects-in-data-science-machine-learning-and-nlp">Projects in machine learning & data science</h2>
-                <hr/>
+
+                <!--TITLE-->
+                <h2 class="ml11">
+                    <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters">Projects in machine learning and data science</span>
+                    </span>
+                </h2>
+
+                <hr>
+                
+                <!--PROJECT 1-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Deep NLP for Hate Speech Detection</h3>
                 <p>Automated hate speech detection deciding whether a given text contains hateful content. Developed a hate speech classifier by leveraging PyTorch to fine-tune a BERT model.<p>
                 <p><img src="twitterproj.png"></p>
@@ -47,9 +59,10 @@
 
                 <hr>
 
+                <!--PROJECT 2-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Predicting Admission Status into a Data Science Masters Program</h3>
                 <p>
-                    In 2021, the University of Texas at Austin launched its data science graduate program. Utilized predictive models using a Random Forest Classifier and Bagging Classifier to anticipate whether applicants would be 'Accepted' or 'Rejected.' These models relied on self-reported data like GPA, GRE scores, and educational background gathered from Reddit through web scraping.
+                    The University of Texas at Austin began offering a graduate program in data science dating back to Spring 2021. Constructed a Random Forest Classifier and Bagging Classifier that predicts an applicant's admission result ('Accepted' or 'Rejected') based on common metrics like GPA, GRE scores, educational background.
                 </p>
                 <p><img src="Tree.png"></p><p><img src="barChart.png"></p>
                 <p><b>Insights:</b> Some of the top influential factors to get accepted include application promptness, undergraduate GPA, and at least some prior work experience. A candidate fares better the earlier they apply and if they have a GPA of around 3.50.</p>
@@ -63,6 +76,7 @@
 
                 <hr>
                 
+                <!--PROJECT 3-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Predictive Policing: Examining Factors That Influence Police Searches</h3>
                 <p>
                     Employed a decision tree model to predict whether a search will occur during traffic stops by the Austin Police Department. Observed features such as time of day of the stop, location, race of driver, reason for stop, among others. Additionally, utilized GridSearchCV for model optimization.
@@ -82,13 +96,9 @@
                 
                 <p><a href="https://colab.research.google.com/drive/1pFk6B7QPW4_6dUZ4aMeSUkFusBfy80Sv?usp=sharing">View code on Colab</a></p>
 
-                <hr>  
+                <hr>   
 
             </section>
-
-
-            <footer>
-            </footer>
         </div>
         <script src="function.js"></script>
     </body>
