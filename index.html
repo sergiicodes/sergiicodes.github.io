@@ -14,9 +14,14 @@
         <meta property="og:type" content="website"/>
         <meta name="twitter:card" content="summary"/>
         <link rel="stylesheet" href="style_portfolio.css">
+        <link rel="stylesheet" href="font-awesome.min.css">
+        <link rel="stylesheet" href="font-awesome.css">
         <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+
     <body>
         <div class="wrapper">
 
@@ -25,23 +30,47 @@
                 <h1 style="font-weight: bold">
                 Sergio Hernandez-Acosta
                 </h1>
-                
                 <img src="me.jpg" alt="Logo" width=90%/>
 
-                <p style="font-size: 5px;">
-                    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="sergio-hernandez-acosta" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/sergio-hernandez-acosta?trk=profile-badge"></a></div>                
-                </p>
+                <!-- Accordion Dropdown Menu -->
+                <ul id="accordion" class="accordion">
+                    <li>
+                        <div class="link"><i class="fa fa-user"></i>About<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <p>Welcome to my portfolio! I'm Sergio—a data-driven engineer who loves blending creativity with technology to solve real-world problems.</p>
+                            <p>My experience ranges from optimizing robotics, teaching data science, & building efficient pipelines. Currently based out of Minneapolis📍.</p>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="link"><i class="fa fa-graduation-cap"></i>Education<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="#"><img src="icons8-ut-96.png" alt="UT Logo" style="width: 24px; height: 24px;">Texas - M.S., Data Science</a></li>        
+                            <li><a href="#"><img src="icons8-ttu-96.png" alt="TTU Logo" style="width: 24px; height: 24px;">Texas Tech - B.S., MechEng</a></li>        
+                        </ul>
+                    </li>  
+
+                    <li>
+                        <div class="link"><i class="fa fa-envelope"></i>Links<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="https://www.linkedin.com/in/sergio-hernandez-acosta/"><img src="icons8-linkedin-96.png" alt="LinkedIn Logo" style="width: 24px; height: 24px;">LinkedIn</a></li>        
+                            <li><a href="mailto:sergiojhernandezacosta@gmail.com" target="_blank"><img src="icons8-mail-96.png" alt="Mail Logo" style="width: 24px; height: 24px;">Email</a></li>        
+                            <li><a href="https://github.com/sergiicodes"><img src="icons8-github-96.png" alt="Github Logo" style="width: 24px; height: 24px;">GitHub</a></li>                  
+                            <li><a href="https://sergiio.substack.com/"><img src="icons8-blog-96.png" alt="Blog Logo" style="width: 24px; height: 24px;">Blog</a></li>                  
+                        </ul>
+                    </li>                    
+                </ul>
             </header>
 
             <section>
 
                 <!--TITLE-->
-                <h2 class="ml11">
-                    <span class="text-wrapper">
-                        <span class="line line1"></span>
-                        <span class="letters">Projects in machine learning and data science</span>
-                    </span>
-                </h2>
+                <h1 id="elementEl" data-content="Projects in: {machine learning} and [data science]" style="font-family: Consolas, monaco, monospace; font-size: 17px;">
+                    Projects <span style="color: #bb86c0;">in</span>: 
+                    <span style="color: #f1d700;">{</span>machine learning<span style="color: #f1d700;">}</span> 
+                    <span style="color: #569cd6;">and</span> 
+                    <span style="color: #f1d700;">[</span>data science<span style="color: #f1d700;">]</span>
+                </h1>
 
                 <hr>
                 
@@ -60,6 +89,8 @@
 
                 <hr>
 
+                <!---->
+
                 <!--PROJECT 2-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Predicting Admission Status into a Data Science Masters Program</h3>
                 <p>
@@ -74,8 +105,10 @@
                     <a href="https://www.spyder-ide.org/"><img src="https://img.shields.io/badge/Spyder%20Ide-FF0000?style=for-the-badge&logo=spyder%20ide&logoColor=white" alt=""/></a>                    
                 </p>
                 <p><a href="https://colab.research.google.com/drive/1qQqCdMW65JZinqMYJJrJKkxGr_0Ma0hV?usp=sharing" target="_blank">View code on Colab</a></p>
-                
+
                 <hr>
+
+                <!---->
                 
                 <!--PROJECT 3-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Predictive Policing: Examining Factors That Influence Police Searches</h3>
@@ -99,9 +132,9 @@
 
                 <hr>   
 
-                <!--PROJECT 4-->
+                <!---->
 
-                <p>
+                <!--PROJECT 4-->
                 <h3 id="deep-nlp-for-hate-speech-detection">Comparative Analysis of Economic Growth and Energy Mix</h3>
                 <p> Employed k-means clustering analyses to uncover striking regional disparities in energy consumption, with distinct clusters indicating varying reliance on renewables versus non-renewables.</p>
                 
@@ -119,10 +152,17 @@
 
                 <hr>
 
-            </section>
-        </div>
-        
-        <script src="function.js"></script>
-    </body>
+                <p style="font-size: 10px;">© <span id="year"></span> Sergio Hernandez-Acosta. All rights reserved.</p>
 
+            </section>
+
+        </div>
+
+        <!--JS file for misc. functionalities-->
+        <script src="function.js"></script>
+
+        <!--JS function to automatically update year-->
+        <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+    </body>
 </html>
