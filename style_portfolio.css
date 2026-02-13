@@ -1,8 +1,17 @@
-@font-face {
-    font-family: 'GraphikSemiBold';
-    src: url('GraphikSemibold.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+.raleway-regular {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
+
+#elementEl::after {
+    content: '|';
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+  }
+  
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 a img {
@@ -16,13 +25,6 @@ a:hover img {
 .badge-base.LI-profile-badge {
     width: 50%;
     height: 50%; 
-}
-
-@font-face {
-    font-family: 'GraphikLiteweight';
-    src: url('GraphikLight.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
 }
 
 .highlight table td {
@@ -302,21 +304,68 @@ a:hover img {
 }
 
 body {
+    font-family: "Raleway", sans-serif;
     background-color: #fff;
     padding: 50px;
-    font-family: 'GraphikLiteweight', sans-serif;
     font-size: 14px;
     line-height: 1.5;
     color: #727272;
     font-weight: 400;
-    text-align: justify;
 }
 
+.outlined-gradient {
+  position: relative;
+  font-family: "Raleway", sans-serif;
+  color: rgb(0, 0, 0);
+  -webkit-text-stroke: 0.75px transparent;
+}
+
+/* Gradient stroke layer */
+.outlined-gradient::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  /* Use the lava-lamp gradient as stroke */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #a21edb,
+    #ff19f7 7.14%,
+    #ec104d 14.28%,
+    #ff9c07 21.42%,
+    #fcc359 28.56%,
+    #ec1040 35.7%,
+    #eb5878 42.84%,
+    #a21edb 50%
+  );
+  background-size: 600vw 600vw;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* animate like lava-lamp */
+  animation: followThrough 9s linear infinite;
+
+}
+
+/* same animation you already had */
+@keyframes followThrough {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 50% 50%; }
+  100% { background-position: 0% 0%; }
+}
+
+
+/*=========================*/
+
 h1,h2 {
-    font-family: 'GraphikSemiBold', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
+    font-family: "Raleway", sans-serif;
     color: #222;
     margin: 0 0 20px
 }
@@ -330,7 +379,7 @@ h1,h2,h3 {
 }
 
 h1 {
-    font-size: 20px
+    font-size: 22px
 }
 
 h2 {
@@ -363,9 +412,14 @@ a:hover small {
     color: #777
 }
 
+/* MAIN LAYOUT */
 .wrapper {
-    width: 860px;
-    margin: 0 auto
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
 }
 
 blockquote {
@@ -428,9 +482,17 @@ kbd {
 
 header {
     width: 270px;
-    float: left;
-    position: fixed;
+    /* Sticky positioning for the sidebar */
+    position: sticky;
+    top: 50px; 
+    flex-shrink: 0;
     -webkit-font-smoothing: subpixel-antialiased
+}
+
+section, main {
+    width: 500px;
+    flex: 1;
+    padding-bottom: 50px
 }
 
 ul.downloads {
@@ -493,11 +555,6 @@ strong {
     color: #222
 }
 
-section {
-    width: 500px;
-    float: right;
-    padding-bottom: 50px
-}
 
 small {
     font-size: 11px
@@ -511,34 +568,36 @@ hr {
 }
 
 footer {
-    width: 270px;
-    float: left;
-    position: fixed;
-    bottom: 50px;
-    -webkit-font-smoothing: subpixel-antialiased
+    width: 100%;
+    clear: both;
 }
 
 @media print, screen and (max-width: 960px) {
-    div.wrapper {
-        width:auto;
-        margin: 0
+    body {
+        padding: 30px;
+    }
+    .wrapper {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        gap: 30px;
     }
 
-    header,section,footer {
-        float: none;
+    header, section, main, footer {
+        width: 100%;
         position: static;
-        width: auto
+        padding-right: 0;
     }
 
-    header {
-        padding-right: 320px
+    /* Accordion Menu max width adjustment for mobile */
+    .accordion {
+        margin: 0 0 20px 0;
+        max-width: 100%;
     }
 
-    section {
-        border: 1px solid #e5e5e5;
-        border-width: 1px 0;
-        padding: 20px 0;
-        margin: 0 0 20px
+    section, main {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 20px;
     }
 
     header a small {
@@ -546,9 +605,9 @@ footer {
     }
 
     header ul {
-        position: absolute;
-        right: 50px;
-        top: 52px
+        /* Reset positioning for mobile */
+        position: static;
+        width: 100%;
     }
 }
 
@@ -590,4 +649,143 @@ footer {
         font-size: 12pt;
         color: #444
     }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+ul { list-style-type: none; }
+
+.badges img {
+  border-radius: 12px;
+}
+
+/** =======================
+* Contenedor Principal
+===========================*/
+
+
+h1 a {
+    color: #c12c42;
+    font-size: 16px;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 360px;
+    margin: 30px auto 20px;
+    background: #FFF;
+    border-radius: 4px;
+    border: 1px solid #CCC; 
+}
+
+/* Reset button styles for .link */
+button.link {
+    background: none;
+    border: none;
+    font-family: inherit;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}
+
+.accordion .link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px 15px 42px;
+    color: #4D4D4D;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.accordion li:last-child .link { border-bottom: 0; }
+
+.accordion li i {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 18px;
+    color: #595959;
+    transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    font-size: 16px;
+}
+
+.accordion li.open .link { color: #b63b4d; }
+
+.accordion li.open i { color: #b63b4d; }
+
+.accordion li.open i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/*-----------Submenu------------------*/
+
+.submenu {
+    display: none; /* Hidden by default */
+    background: #55536e;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+/* Show submenu when parent li is open */
+.accordion li.open .submenu {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.submenu li { 
+    border-bottom: 1px solid #57566c; 
+    align-items: center;
+}
+
+.submenu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #d9d9d9;
+    padding: 12px;
+    padding-left: 42px;
+    transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+    background: #b63b4d;
+    color: #FFF;
+}
+
+.submenu li a i, .submenu li a img {
+    margin-right: 20px; 
+}
+
+.submenu p {
+    margin: 0px; 
+    padding: 12px; 
+    line-height: 1.6; 
+    color: #d9d9d9; 
+}
+
+.badge-base {
+    display: flex;
+    margin-left: 0%;
 }
