@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MN Health vs Air Quality Insights</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1>Air Quality vs Respiratory Health in MN</h1>
+                <p>Analyzing PM2.5 Correlations with Asthma & COPD Across Urban and Rural Divides</p>
+            </div>
+            <div class="controls">
+                <div class="toggle-group" id="condition-toggle">
+                    <button class="toggle-btn active" data-condition="Asthma">Asthma</button>
+                    <button class="toggle-btn" data-condition="COPD">COPD</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Map Visualization -->
+            <section class="map-section">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <div class="legend-title">Pearson Correlation (PM2.5 vs Cases)</div>
+                    <div class="legend-bar"></div>
+                    <div class="legend-labels">
+                        <span>Negative (-1)</span>
+                        <span>0</span>
+                        <span>Positive (+1)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Insights -->
+            <aside class="insights-section">
+                <div class="insight-card">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Decisive Insights
+                    </h2>
+                    <div class="insight-text" id="insight-summary-text">
+                        Loading insights...
+                    </div>
+                    
+                    <div class="insight-stat">
+                        <div class="stat-label">Urban Corr (<span id="stat-type">Asthma</span>)</div>
+                        <div class="stat-value" id="urban-corr">--</div>
+                    </div>
+                    <div class="insight-stat">
+                        <div class="stat-label">Rural Corr (<span id="stat-type-2">Asthma</span>)</div>
+                        <div class="stat-value" id="rural-corr">--</div>
+                    </div>
+                    
+                    <div class="insight-text" style="border-left-color: #fca5a5; font-size: 0.85rem; padding: 10px;">
+                        <strong style="color:white; display:block; margin-bottom:4px;">Statistical Significance:</strong>
+                        <span id="p-value-text">Fisher-Z T-Test comparing Urban vs Rural segments.</span>
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-city"></i>
+                        Systemic Divide
+                    </h2>
+                    <div class="insight-stat">
+                        <div class="stat-label">Urban Avg PM2.5</div>
+                        <div class="stat-value" id="urban-pm25">--</div>
+                    </div>
+                    <div class="insight-stat">
+                        <div class="stat-label">Rural Avg PM2.5</div>
+                        <div class="stat-value" id="rural-pm25">--</div>
+                    </div>
+                    <div class="insight-text" style="border-left-color: #38bdf8; font-size: 0.85rem;">
+                        Does geography dictate health outcomes independently of air quality? The correlation divergence indicates yes.
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Chroma.js for Color Scaling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+    <!-- Inlined Data -->
+    <script src="data.js"></script>
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
