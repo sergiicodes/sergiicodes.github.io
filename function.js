@@ -76,36 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Fetch Substack RSS for Sidebar Ticker Box
-  const substackContainer = document.getElementById('substack-ticker-content');
-  if (substackContainer) {
-    const rssUrl = 'https://softmaxserg.substack.com/feed';
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'ok' && data.items.length > 0) {
-          let tickerHtml = ''; 
-          
-          // Get top 4 Substack items
-          const items = data.items.slice(0, 4);
-          items.forEach(item => {
-            tickerHtml += `
-              <span class="ticker-item"><i class="fa fa-circle" style="font-size: 6px; margin-right: 6px; vertical-align: middle;"></i><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></span>
-            `;
-          });
-
-          // Output the items, duplicating them to create an infinite scroll illusion
-          substackContainer.innerHTML = tickerHtml + tickerHtml;
-        } else {
-          substackContainer.innerHTML = '<span class="ticker-item error-text">Failed to load articles.</span>';
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching ticker feed:', error);
-        substackContainer.innerHTML = '<span class="ticker-item error-text">Failed to load articles.</span>';
-      });
-  }
 });
 
